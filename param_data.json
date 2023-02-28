@@ -1,0 +1,5 @@
+{
+"ESServer" : "http://localhost:9200",
+"ESUser" : "elastic",
+"ESPwd" : "XXXXXXXXXXX"
+}
