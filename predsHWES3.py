@@ -108,7 +108,7 @@ class HWESSimple:
         # self.doubleHWES()
         self.tripleHWES()
         self.errorComp(self.myTS['Quantity'],self.myTS['HWES3_MUL'])
-
+        nbr = self.put_Preds()
 
     def put_Preds(self):
       pred = self.preds.to_numpy()[0]
