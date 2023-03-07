@@ -41,22 +41,14 @@ class HWESSimple:
         print ("Getting the Time Series")
         ts_ready_tmp = self.es.search(index="ts_ready", body={"query": {"match_all" : {}}, "size" : 1000})
 
-        # data_tmp=json.loads(ts_ready_tmp)
-        # for hit in ts_ready_tmp['hits']['hits']:
         data = (ts_ready_tmp['hits']['hits'])
         # print(ts_ready_tmp['hits']['hits'])
         self.myTS_data=pd.json_normalize(data)
-            # self.myTS_date.append(hit["_source"]["Date"])
-            # self.myTS_data.append(hit["_source"]["Quantity"])
 
 
-# airline = pd.read_csv('airline_passengers.csv',index_col='Month', parse_dates=True)
     def frameShape(self):
         # finding shape of the dataframe
         print(self.myTS_data.shape)
-        # print(self.myTS_data)
-        # having a look at the data
-        # plotting the original data
         self.myTS = self.myTS_data[['_source.Date','_source.Quantity']]
         self.myTS.rename(columns = {'_source.Date':'Date', '_source.Quantity':'Quantity'}, inplace = True)
 
@@ -81,14 +73,7 @@ class HWESSimple:
         # test predictions 
         self.preds = fitted_model.forecast(1)
 
-        # print(self.myTS)
-        # print(preds, preds[0] , preds[1])
         print(self.preds)
-        # Adding the Pred to the Dataframe
-        # df.loc[len(df.index)] = ['Amy', 89, 93]
-        # self.myTS.loc[len(self.myTS.index)] = [preds[0], 0, preds[1]]
-        # print(self.myTS)
-        # self.errorComp(self.myTS['Quantity'],self.myTS['HWES3_MUL'])
         self.myTS.reset_index(inplace=True)
         # print(type(self.myTS))
         # print(self.myTS.shape)
