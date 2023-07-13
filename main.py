@@ -1,6 +1,6 @@
-import predsHWES3
+import predsNew as preds
 
-p1 = predsHWES3.HWESSimple("param_data.json")
+p1 = preds.TSPredGen("param_data.json")
 
 nbr = p1.mainProcess()
 
